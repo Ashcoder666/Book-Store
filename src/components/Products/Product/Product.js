@@ -9,19 +9,19 @@ const Product = ({product}) => {
     <Card className={classes.root}>
         <CardMedia className={classes.media} image={product.image} title={product.name}/>
         <CardContent>
-            <div className={classes.CardContent}>
-                <Typography variant='h5'>
+            <div className={classes.cardContent}>
+                <Typography variant='h5' gutterBottom>
                     {product.name}
                 </Typography>
-                <Typography variant='h6'>
+                <Typography variant='h5'>
                     {product.price}
                 </Typography>
             </div>
-            <Typography variant='body-2' >
+            <Typography variant='body2' >
                 {product.description}
                 </Typography>
         </CardContent>
-        <CardActions>
+        <CardActions disableSpacing className={classes.cardActions}>
             <IconButton>
                 <AddShoppingCart />
             </IconButton>

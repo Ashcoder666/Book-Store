@@ -5,7 +5,9 @@ import Product from './Product/Product'
 
 const products = [
     {id: '1', name: 'book1' , description: 'hey im book 1', image:'https://m.media-amazon.com/images/I/51y08lCeLUL._SL500_.jpg',price:600},
-    {id: '2', name: 'book2' , description: 'hey im book 2', image:'https://m.media-amazon.com/images/I/51Td98yZa7L._SL500_.jpg',price:780}
+    {id: '2', name: 'book2' , description: 'hey im book 2', image:'https://m.media-amazon.com/images/I/51Td98yZa7L._SL500_.jpg',price:780},
+    {id: '3', name: 'book2' , description: 'hey im book 2', image:'https://m.media-amazon.com/images/I/51Td98yZa7L._SL500_.jpg',price:780},
+    {id: '4', name: 'book2' , description: 'hey im book 2', image:'https://m.media-amazon.com/images/I/51Td98yZa7L._SL500_.jpg',price:780},
 ]
 
 const Products = () => {
