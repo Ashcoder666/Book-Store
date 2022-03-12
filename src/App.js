@@ -1,9 +1,14 @@
+import React from 'react'
 import Navbar from './components/NavBar/NavBar'
 import Products from './components/Products/Products'
 import Cart from './components/Cart/Cart'
 import {commerce} from './lib/commerce'
 import {useState,useEffect} from 'react'
 import './app.css'
+import {BrowserRouter,Routes,Route} from'react-router-dom'
+export const updateContext = React.createContext()
+export const deleteContext = React.createContext()
+export const emptyContext = React.createContext()
 
 function App() {
   const [products,setProducts] = useState([])
@@ -27,6 +32,22 @@ const handleToAddCart = async(productId,quantity)=>{
   
 }
 
+const handleUpdateCartQty = async(productId,quantity)=>{
+  const response = await commerce.cart.update(productId,{quantity});
+  setCart(response.cart)
+}
+
+const handleRemoveFromCart = async (productId)=>{
+    const response = await commerce.cart.remove(productId);
+    setCart(response.cart)
+}
+
+const handleEmptyCart = async () => {
+  const response = await commerce.cart.empty();
+
+  setCart(response.cart);
+};
+
   useEffect(()=>{
     fetchProducts();
     fetchCart();
@@ -35,12 +56,30 @@ const handleToAddCart = async(productId,quantity)=>{
   console.log(cart)
 
   return (
+
+    <BrowserRouter>
+   
     <div className="App">
         <Navbar totalItems={cart.total_items} />
-        {/* <Products products={products} onAddToCart={handleToAddCart}/>  */}
-        <Cart cart={cart} />
+        <emptyContext.Provider value={handleEmptyCart}>
+        <updateContext.Provider  value={ handleUpdateCartQty}>
+            <deleteContext.Provider value={handleRemoveFromCart}>
+        <Routes>
+        <Route path="/" element={  <Products products={products} onAddToCart={handleToAddCart}/> } /> 
+         
+            <Route path="/cart" element={<Cart cart={cart} />} />
+           
+      
+        
+
+        </Routes>
+
+        </deleteContext.Provider>
+          </updateContext.Provider>
+          </emptyContext.Provider>
         
     </div>
+    </BrowserRouter>
   );
 }
 
