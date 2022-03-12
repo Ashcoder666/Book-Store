@@ -3,6 +3,7 @@ import Products from './components/Products/Products'
 import Cart from './components/Cart/Cart'
 import {commerce} from './lib/commerce'
 import {useState,useEffect} from 'react'
+import './app.css'
 
 function App() {
   const [products,setProducts] = useState([])

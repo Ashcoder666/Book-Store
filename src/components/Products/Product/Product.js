@@ -6,14 +6,16 @@ import makeStyles from './styles'
 const Product = ({product,onAddToCart}) => {
     const classes = makeStyles();
   return (
+   
     <Card className={classes.root}>
+        
         <CardMedia className={classes.media} image={product.image.url} title={product.name}/>
         <CardContent>
             <div className={classes.cardContent}>
-                <Typography variant='h5' gutterBottom>
+                <Typography variant='h6' gutterBottom>
                     {product.name}
                 </Typography>
-                <Typography variant='h5'>
+                <Typography variant='h6'>
                     {product.price.formatted_with_symbol}
                 </Typography>
             </div>
