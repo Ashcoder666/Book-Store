@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './components/NavBar/NavBar'
 import Products from './components/Products/Products'
 import Cart from './components/Cart/Cart'
+import Checkout from './components/CheckoutForm/CheckOut/Checkout'
 import {commerce} from './lib/commerce'
 import {useState,useEffect} from 'react'
 import './app.css'
@@ -53,7 +54,7 @@ const handleEmptyCart = async () => {
     fetchCart();
   },[])
 
-  console.log(cart)
+ 
 
   return (
 
@@ -68,6 +69,9 @@ const handleEmptyCart = async () => {
         <Route path="/" element={  <Products products={products} onAddToCart={handleToAddCart}/> } /> 
          
             <Route path="/cart" element={<Cart cart={cart} />} />
+
+
+            <Route path='/checkout' element={<Checkout />}/>
            
       
         

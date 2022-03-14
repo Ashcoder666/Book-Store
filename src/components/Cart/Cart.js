@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import {Container, Typography ,Button , Grid} from '@material-ui/core'
+import {Container, Typography ,Button , Grid , CircularProgress} from '@material-ui/core'
 import makeStyles from './styles'
 import CartItem from './CartItem/CartItem'
 import {Link} from 'react-router-dom'
@@ -35,13 +35,13 @@ const Cart = ({cart}) => {
             <Typography variant='h4'>Subtotal :{cart.subtotal.formatted_with_symbol}</Typography>
             <div>
             <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={()=>{onEmptyCart()}} >Empty cart</Button>
-          <Button className={classes.checkoutButton}  to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button>
+          <Button component={Link}  className={classes.checkoutButton}  to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button>
             </div>
         </div>
         </>
     )
 
-    if(!cart.line_items) return "loading..."
+    if(!cart.line_items) return <CircularProgress style={{marginTop:'100px'}} size="large" color="primary"/>
 
   return (
    <Container>
