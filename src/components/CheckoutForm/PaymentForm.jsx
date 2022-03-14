@@ -1,6 +1,7 @@
 import React from 'react'
 
-const PaymentForm = () => {
+const PaymentForm = ({shippingData,checkoutToken}) => {
+  
   return (
     <div>
       

@@ -71,7 +71,7 @@ const handleEmptyCart = async () => {
             <Route path="/cart" element={<Cart cart={cart} />} />
 
 
-            <Route path='/checkout' element={<Checkout />}/>
+            <Route path='/checkout' element={<Checkout cart={cart} />}/>
            
       
         
