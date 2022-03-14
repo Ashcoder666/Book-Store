@@ -26,9 +26,13 @@ const Checkout = ({cart}) => {
       generateToken()
     },[cart])
 
+    const nextStep = ()=>{
+      setActiveStep(prev => prev+1)
+    }
+
     const next = (data)=>{
       setShippingData(data);
-      setActiveStep(prev => prev+1)
+      nextStep();
     }
 
     const Confirmation =()=>{
