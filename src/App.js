@@ -64,6 +64,7 @@ const handleCaptureCheckout = async(checkoutTokenId,newOrderId) => {
     refreshCart();
   } catch (error) {
     setErrorMessage(error.data.error.message);
+    refreshCart();
   }
 
 }

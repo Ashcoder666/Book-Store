@@ -3,18 +3,21 @@ import Review from './Review'
 import {Typography,Button,Divider} from '@material-ui/core'
 import {Elements,CardElement,ElementsConsumer} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
+import commerce from '../../lib/commerce'
 
 
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_API_KEY);
 
-const PaymentForm = ({shippingData,checkoutToken,backstep,onCaptureCheckout,nextStep}) => {
+const PaymentForm = ({shippingData,checkoutToken,backstep,onCaptureCheckout,nextStep,getOrderData}) => {
 
   const handleSubmit = async (e,elements,stripe)=>{
       e.preventDefault();
       if(!stripe||!elements) return ;
 
       const cardElement = elements.getElement(CardElement);
+     
+      
 
       const {error,paymentMethod} = await stripe.createPaymentMethod({type:'card',card:cardElement})
 
@@ -34,10 +37,12 @@ const PaymentForm = ({shippingData,checkoutToken,backstep,onCaptureCheckout,next
             },
           },
         };
-        console.log(orderData,checkoutToken.id)
-        onCaptureCheckout(checkoutToken.id,orderData)
-        nextStep()
+            console.log(orderData,checkoutToken.id)
+            getOrderData(orderData)
+            onCaptureCheckout(checkoutToken.id,orderData)
+            nextStep()
 
+          
       }
 
   }
